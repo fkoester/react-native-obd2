@@ -2,7 +2,6 @@ package com.github.pires.obd.reader.io;
 
 import android.util.Log;
 
-import com.facebook.react.ReactActivity;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.github.pires.obd.commands.protocol.EchoOffCommand;
 import com.github.pires.obd.commands.protocol.LineFeedOffCommand;
@@ -111,7 +110,6 @@ public class MockObdGatewayService extends AbstractGatewayService {
     public void stopService() {
         Log.d(TAG, "Stopping service..");
 
-        notificationManager.cancel(NOTIFICATION_ID);
         jobsQueue.clear();
         isRunning = false;
 

@@ -5,16 +5,12 @@ import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.Uri;
-import android.os.Binder;
 import android.os.Build;
 import android.os.Environment;
-import android.os.IBinder;
 import android.util.Log;
 
 import com.facebook.react.bridge.ReactApplicationContext;
-import com.github.pires.obd.commands.ObdCommand;
 import com.github.pires.obd.commands.protocol.EchoOffCommand;
 import com.github.pires.obd.commands.protocol.LineFeedOffCommand;
 import com.github.pires.obd.commands.protocol.ObdResetCommand;
@@ -23,15 +19,10 @@ import com.github.pires.obd.commands.protocol.TimeoutCommand;
 import com.github.pires.obd.commands.temperature.AmbientAirTemperatureCommand;
 import com.github.pires.obd.enums.ObdProtocols;
 import com.github.pires.obd.exceptions.UnsupportedCommandException;
-import com.github.pires.obd.reader.config.ObdConfig;
-import com.github.pires.obd.reader.io.BluetoothManager;
 import com.github.pires.obd.reader.io.ObdCommandJob.ObdCommandJobState;
-import com.google.inject.Inject;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.UUID;
 
 /**
  * This service is primarily responsible for establishing and maintaining a
@@ -238,8 +229,7 @@ public class ObdGatewayService extends AbstractGatewayService {
      */
     public void stopService() {
         Log.d(TAG, "Stopping service..");
-
-        notificationManager.cancel(NOTIFICATION_ID);
+        
         jobsQueue.clear();
         isRunning = false;
 
