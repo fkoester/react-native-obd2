@@ -229,7 +229,7 @@ public class ObdGatewayService extends AbstractGatewayService {
      */
     public void stopService() {
         Log.d(TAG, "Stopping service..");
-        
+
         jobsQueue.clear();
         isRunning = false;
 
